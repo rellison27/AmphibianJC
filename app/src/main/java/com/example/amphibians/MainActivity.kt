@@ -22,10 +22,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.amphibians.model.Amphibian
 import com.example.amphibians.network.FakeAmphibianDataSource
+import com.example.amphibians.ui.screen.AmphibianViewModel
 import com.example.amphibians.ui.theme.AmphibiansTheme
 
 class MainActivity : ComponentActivity()
@@ -40,7 +42,8 @@ class MainActivity : ComponentActivity()
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AmphibiansScreen(amphibians = FakeAmphibianDataSource.mockData)
+                    val amphibianViewModel: AmphibianViewModel = viewModel()
+                    AmphibiansScreen(amphibians = amphibianViewModel.amphibianUiState)
                 }
             }
         }
