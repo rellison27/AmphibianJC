@@ -42,7 +42,8 @@ class MainActivity : ComponentActivity()
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val amphibianViewModel: AmphibianViewModel = viewModel()
+                    val amphibianViewModel: AmphibianViewModel =
+                        viewModel(factory = AmphibianViewModel.Factory)
                     AmphibiansScreen(amphibians = amphibianViewModel.amphibianUiState)
                 }
             }
